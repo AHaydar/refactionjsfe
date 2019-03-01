@@ -1,19 +1,6 @@
 const { GraphQLServer } = require('graphql-yoga');
-const DataStore = require('nedb'),
-db = new DataStore({
-    filename: 'db.json',
-    autoload: true
-});
 
-const people = {
-    find: (query) => new Promise((resolve, reject) =>
-        db.find(query)
-        .exec((err, docs) => {
-            if (err) reject(err);
-            return resolve(docs);
-        })
-    )
-}
+const data = require('./db/index');
 
 const typeDefs = `
     type Query {
@@ -31,7 +18,7 @@ const typeDefs = `
 const resolvers = {
   Query: {
     info: () => `This is the API of Persons`,
-    people: () => people.find({})
+    people: () => data.find()
   },
   Person: {
     id: (parent) => parent._id,
