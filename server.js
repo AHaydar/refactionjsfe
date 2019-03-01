@@ -5,15 +5,20 @@ db = new DataStore({
     autoload: true
 });
 
-let persons;
-db.find({}, (err, docs) => {
-     persons = docs;
-});
+const people = {
+    find: (query) => new Promise((resolve, reject) =>
+        db.find(query)
+        .exec((err, docs) => {
+            if (err) reject(err);
+            return resolve(docs);
+        })
+    )
+}
 
 const typeDefs = `
     type Query {
         info: String!
-        persons: [Person!]!
+        people: [Person!]!
     }
 
     type Person {
@@ -26,7 +31,7 @@ const typeDefs = `
 const resolvers = {
   Query: {
     info: () => `This is the API of Persons`,
-    persons: () => persons,
+    people: () => people.find({})
   },
   Person: {
     id: (parent) => parent._id,
