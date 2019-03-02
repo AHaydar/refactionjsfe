@@ -1,6 +1,6 @@
 type Query {
     info: String!
-    people(gender: String!): [Person]!
+    people(gender: String, age: Int): [Person]!
 }
 
 type Person {
