@@ -1,34 +1,20 @@
+const path = require('path');
 const { GraphQLServer } = require('graphql-yoga');
 
 const data = require('./db/index');
 
-const typeDefs = `
-    type Query {
-        info: String!
-        people: [Person!]!
-    }
-
-    type Person {
-        id: ID!
-        name: String!
-        age: Int!
-    }
-`;
-
 const resolvers = {
   Query: {
     info: () => `This is the API of Persons`,
-    people: () => data.find()
+    people: (root, args, context) => data.find(args)
   },
   Person: {
     id: (parent) => parent._id,
-    name: (parent) => parent.name,
-    age: (parent) => parent.age,
   }
 };
 
 const server = new GraphQLServer({
-    typeDefs,
+    typeDefs: path.resolve('src','schema.graphql'),
     resolvers,
 })
 
