@@ -1,7 +1,7 @@
 const path = require('path');
 const NeDB = require('nedb');
 
-const filename = path.resolve('db', 'db.json');
+const filename = path.resolve('src', 'db', 'db.json');
 
 const db = new NeDB({
     filename: filename,
