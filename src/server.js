@@ -51,5 +51,3 @@ const server = new GraphQLServer({
 })
 
 server.start(() => console.log(`GraphQL Server is running on http://localhost:4000`));
-
-// { gender: 'female', age: { value: 30, operator: 'LT' } }
