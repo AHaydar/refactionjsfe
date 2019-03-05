@@ -1,6 +1,6 @@
 type Query {
     info: String!
-    people(gender: String, age: Int): [Person]!
+    people(gender: String, age: AgeFilter): [Person]!
 }
 
 type Person {
@@ -9,3 +9,17 @@ type Person {
     age: Int!
     gender: String!
 }
+
+input AgeFilter {
+  value: Int!
+  operator: Operator!
+}
+
+# Build the age query in the resolver based on the operator passed
+enum Operator{
+    LT
+    GT
+    LTE
+    GTE
+    EQ
+} 
