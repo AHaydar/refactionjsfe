@@ -1,7 +1,7 @@
 const path = require('path');
 const { GraphQLServer } = require('graphql-yoga');
 
-const data = require('./db/index');
+const data = require('../db/index');
 
 const resolvers = {
   Query: {
@@ -46,7 +46,7 @@ const resolvers = {
 };
 
 const server = new GraphQLServer({
-    typeDefs: path.resolve('src','schema.graphql'),
+    typeDefs: path.resolve('src', 'graphql','schema.graphql'),
     resolvers,
 })
 
