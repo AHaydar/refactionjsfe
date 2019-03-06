@@ -31,3 +31,8 @@ There is no "right answer", but some good things to do might be:
 * Add logging
 
 ## Most importantly: show us what you can do!
+
+# Installation
+Please follow the below instructions to install and start the application on your local:
+* Navigate to the backend folder and run: `npm i` - This will start the graphql server on http://localhost:4000
+* Navigate to the front-end folder and run: `npm i`. browse to http://localhost:3000
