@@ -2,9 +2,9 @@ import React from 'react';
 
 const Person = ({ person }) => {
     return (
-        <div>
+        <li>
             {person.name} {person.age}
-        </div>
+        </li>
     );
 };
 
