@@ -3,48 +3,21 @@ import { Query } from 'react-apollo'
 import gql from 'graphql-tag'
 import Person from './Person';
 
-// const personsToRender = [
+// const PEOPLE_QUERY = gql`
 //     {
-//       "id": "b3Fshn8F976TZCTg",
-//       "name": "Jim",
-//       "age": 30,
-//       "gender": "male"
-//     },
+//     info
+//     people 
 //     {
-//       "id": "k3nEqkqlKmWZNejC",
-//       "name": "Jane",
-//       "age": 55,
-//       "gender": "female"
-//     },
-//     {
-//       "id": "oqnu2ZnPTebp04bG",
-//       "name": "Bob",
-//       "age": 20,
-//       "gender": "male"
-//     },
-//     {
-//       "id": "tKmv8RC6GlUnYcV3",
-//       "name": "Sally",
-//       "age": 24,
-//       "gender": "female"
+//         id,
+//         name,
+//         age,
+//         gender
+//         }
 //     }
-//   ];
+// `;
 
-const PEOPLE_QUERY = gql`
-    {
-    info
-    people 
-    {
-        id,
-        name,
-        age,
-        gender
-        }
-    }
-`;
-
-const People = () => (
-    <Query query={PEOPLE_QUERY}>
+const People = ({ gql }) => (
+    <Query query={gql}>
         {
             ({ loading, error, data }) => {
                 if (loading) return <div>Fetching</div>
@@ -52,9 +25,9 @@ const People = () => (
 
                 const personsToRender = data.people
                 return (
-                    <div>
+                    <ul>
                         {personsToRender.map(person => <Person key={person.id} person={person}/>)}
-                    </div>
+                    </ul>
                 )
             }
         }
