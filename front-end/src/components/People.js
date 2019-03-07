@@ -1,20 +1,6 @@
 import React from 'react';
 import { Query } from 'react-apollo'
-import gql from 'graphql-tag'
 import Person from './Person';
-
-// const PEOPLE_QUERY = gql`
-//     {
-//     info
-//     people 
-//     {
-//         id,
-//         name,
-//         age,
-//         gender
-//         }
-//     }
-// `;
 
 const People = ({ gql }) => (
     <Query query={gql}>
