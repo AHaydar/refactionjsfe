@@ -1,5 +1,5 @@
 export default {
-    everyone:  
+  everyone:
     `{
         info
         people 
@@ -10,7 +10,7 @@ export default {
             gender
         }
     }`,
-    male:
+  male:
     `{
         info
         people (gender: "male")
@@ -21,7 +21,7 @@ export default {
           gender
         }
     }`,
-    female:
+  female:
     `{
         info
         people (gender: "female")
@@ -32,7 +32,7 @@ export default {
           gender
         }
     }`,
-    over30: 
+  over30:
     `{
         info
         people (age: {
@@ -46,7 +46,7 @@ export default {
           gender
         }
     }`,
-    under30:
+  under30:
     `{
         info
         people (age: {
@@ -59,6 +59,6 @@ export default {
           age,
           gender
         }
-    }`
+    }`,
 
 };
