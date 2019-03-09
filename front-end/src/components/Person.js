@@ -1,11 +1,9 @@
 import React from 'react';
 
-const Person = ({ person }) => {
-    return (
-        <li>
-            {person.name} {person.age}
-        </li>
-    );
-};
+const Person = ({ person }) => (
+    <li>
+        {person.name} {person.age}
+    </li>
+);
 
 export default Person;

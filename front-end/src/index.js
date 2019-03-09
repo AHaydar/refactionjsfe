@@ -9,17 +9,17 @@ import './index.css';
 
 
 const httpLink = createHttpLink({
-    uri: 'http://localhost:4000'
-})
+  uri: 'http://localhost:4000',
+});
 
 const client = new ApolloClient({
-    link: httpLink,
-    cache: new InMemoryCache()
-})
+  link: httpLink,
+  cache: new InMemoryCache(),
+});
 
 ReactDOM.render(
-    <ApolloProvider client={client}>
-        <Main />
-    </ApolloProvider>, 
-    document.getElementById('root')
+  <ApolloProvider client={client}>
+    <Main />
+  </ApolloProvider>,
+  document.getElementById('root'),
 );
