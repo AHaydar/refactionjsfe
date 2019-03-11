@@ -1,28 +1,63 @@
+/* eslint-disable react/button-has-type */
+/* eslint-disable default-case */
 import React from 'react';
-import { BrowserRouter, NavLink, Route } from 'react-router-dom';
 import gql from 'graphql-tag';
 import People from './People';
 import queries from '../graphql/queries';
 
-const Main = () => (
-  <BrowserRouter>
+class Main extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      query: queries.everyone,
+    };
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+handleClick = (event) => {
+  event.preventDefault();
+  switch (event.target.innerHTML) {
+    case 'Everyone':
+      this.setState({
+        query: queries.everyone,
+      });
+      break;
+    case 'Male':
+      this.setState({
+        query: queries.male,
+      });
+      break;
+    case 'Female':
+      this.setState({
+        query: queries.female,
+      });
+      break;
+    case 'Over 30':
+      this.setState({
+        query: queries.over30,
+      });
+      break;
+    case 'Under 30':
+      this.setState({
+        query: queries.under30,
+      });
+      break;
+  }
+}
+
+render() {
+  const { query } = this.state;
+  return (
     <div>
-      <div>
-        <NavLink exact to="/">Everyone</NavLink>
-        <NavLink to="/male">Male</NavLink>
-        <NavLink to="/female">Female</NavLink>
-        <NavLink to="/over30">Over 30</NavLink>
-        <NavLink to="/under30">Under 30</NavLink>
-      </div>
-      <div>
-        <Route exact path="/" render={props => <People {...props} gql={gql`${queries.everyone}`} />} />
-        <Route path="/male" render={props => <People {...props} gql={gql`${queries.male}`} />} />
-        <Route path="/female" render={props => <People {...props} gql={gql`${queries.female}`} />} />
-        <Route path="/over30" render={props => <People {...props} gql={gql`${queries.over30}`} />} />
-        <Route path="/under30" render={props => <People {...props} gql={gql`${queries.under30}`} />} />
-      </div>
+      <button onClick={this.handleClick}>Everyone</button>
+      <button onClick={this.handleClick}>Male</button>
+      <button onClick={this.handleClick}>Female</button>
+      <button onClick={this.handleClick}>Over 30</button>
+      <button onClick={this.handleClick}>Under 30</button>
+      <People gql={gql`${query}`} />
     </div>
-  </BrowserRouter>
-);
+  );
+}
+}
 
 export default Main;
