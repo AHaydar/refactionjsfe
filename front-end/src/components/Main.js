@@ -1,8 +1,7 @@
-/* eslint-disable react/button-has-type */
-/* eslint-disable default-case */
 import React from 'react';
 import gql from 'graphql-tag';
 import People from './People';
+import Menu from './Menu';
 import queries from '../graphql/queries';
 
 class Main extends React.Component {
@@ -42,6 +41,8 @@ handleClick = (event) => {
         query: queries.under30,
       });
       break;
+    default:
+      break;
   }
 }
 
@@ -49,11 +50,7 @@ render() {
   const { query } = this.state;
   return (
     <div>
-      <button onClick={this.handleClick}>Everyone</button>
-      <button onClick={this.handleClick}>Male</button>
-      <button onClick={this.handleClick}>Female</button>
-      <button onClick={this.handleClick}>Over 30</button>
-      <button onClick={this.handleClick}>Under 30</button>
+      <Menu handleClick={this.handleClick} />
       <People gql={gql`${query}`} />
     </div>
   );
