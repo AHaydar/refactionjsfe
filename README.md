@@ -3,5 +3,5 @@ The exercise is to clean up this code and put it in a sensible structure, using 
 
 ## Installation
 Please follow the below instructions to install and start the application on your local:
-* Navigate to the backend folder and run: `npm i` - This will start the graphql server on http://localhost:4000
-* Navigate to the front-end folder and run: `npm i`. browse to http://localhost:3000
+* Navigate to the backend folder and run: `npm i` && `npm start`- This will start the graphql server on http://localhost:4000
+* Navigate to the front-end folder and run: `npm i` && `npm start` - Browse to http://localhost:3000
